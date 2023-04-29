@@ -11,6 +11,13 @@
 		CF0E4EB629FCDF3300600D86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4EB529FCDF3300600D86 /* ContentView.swift */; };
 		CF0E4EB829FCDF3400600D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0E4EB729FCDF3400600D86 /* Assets.xcassets */; };
 		CF0E4EBB29FCDF3400600D86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0E4EBA29FCDF3400600D86 /* Preview Assets.xcassets */; };
+		CF0E4EC329FCDF4E00600D86 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E4EC229FCDF4E00600D86 /* ComposableArchitecture */; };
+		CF0E4EC529FCDF6000600D86 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4EC429FCDF6000600D86 /* Memo.swift */; };
+		CF0E4EC829FCDFBF00600D86 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E4EC729FCDFBF00600D86 /* Realm */; };
+		CF0E4ECA29FCDFBF00600D86 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E4EC929FCDFBF00600D86 /* RealmSwift */; };
+		CF0E4ECC29FCE4E200600D86 /* MemoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECB29FCE4E200600D86 /* MemoReducer.swift */; };
+		CF0E4ECE29FCE71B00600D86 /* MemoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECD29FCE71B00600D86 /* MemoItem.swift */; };
+		CF0E4ED029FCE9F600600D86 /* MemoEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECF29FCE9F600600D86 /* MemoEditorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,10 @@
 		CF0E4EB529FCDF3300600D86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CF0E4EB729FCDF3400600D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF0E4EBA29FCDF3400600D86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CF0E4EC429FCDF6000600D86 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		CF0E4ECB29FCE4E200600D86 /* MemoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoReducer.swift; sourceTree = "<group>"; };
+		CF0E4ECD29FCE71B00600D86 /* MemoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoItem.swift; sourceTree = "<group>"; };
+		CF0E4ECF29FCE9F600600D86 /* MemoEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoEditorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +37,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0E4ECA29FCDFBF00600D86 /* RealmSwift in Frameworks */,
+				CF0E4EC829FCDFBF00600D86 /* Realm in Frameworks */,
+				CF0E4EC329FCDF4E00600D86 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +69,10 @@
 				CF0E4EB529FCDF3300600D86 /* ContentView.swift */,
 				CF0E4EB729FCDF3400600D86 /* Assets.xcassets */,
 				CF0E4EB929FCDF3400600D86 /* Preview Content */,
+				CF0E4EC429FCDF6000600D86 /* Memo.swift */,
+				CF0E4ECB29FCE4E200600D86 /* MemoReducer.swift */,
+				CF0E4ECD29FCE71B00600D86 /* MemoItem.swift */,
+				CF0E4ECF29FCE9F600600D86 /* MemoEditorView.swift */,
 			);
 			path = MemoApp_TCA;
 			sourceTree = "<group>";
@@ -83,6 +101,11 @@
 			dependencies = (
 			);
 			name = MemoApp_TCA;
+			packageProductDependencies = (
+				CF0E4EC229FCDF4E00600D86 /* ComposableArchitecture */,
+				CF0E4EC729FCDFBF00600D86 /* Realm */,
+				CF0E4EC929FCDFBF00600D86 /* RealmSwift */,
+			);
 			productName = MemoApp_TCA;
 			productReference = CF0E4EB029FCDF3300600D86 /* MemoApp_TCA.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +134,10 @@
 				Base,
 			);
 			mainGroup = CF0E4EA729FCDF3300600D86;
+			packageReferences = (
+				CF0E4EC129FCDF4E00600D86 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				CF0E4EC629FCDFBF00600D86 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = CF0E4EB129FCDF3300600D86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +164,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0E4ECC29FCE4E200600D86 /* MemoReducer.swift in Sources */,
+				CF0E4EC529FCDF6000600D86 /* Memo.swift in Sources */,
 				CF0E4EB629FCDF3300600D86 /* ContentView.swift in Sources */,
+				CF0E4ECE29FCE71B00600D86 /* MemoItem.swift in Sources */,
 				CF0E4EB429FCDF3300600D86 /* MemoApp_TCAApp.swift in Sources */,
+				CF0E4ED029FCE9F600600D86 /* MemoEditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +370,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CF0E4EC129FCDF4E00600D86 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.52.0;
+			};
+		};
+		CF0E4EC629FCDFBF00600D86 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.38.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF0E4EC229FCDF4E00600D86 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF0E4EC129FCDF4E00600D86 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		CF0E4EC729FCDFBF00600D86 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF0E4EC629FCDFBF00600D86 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		CF0E4EC929FCDFBF00600D86 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF0E4EC629FCDFBF00600D86 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF0E4EA829FCDF3300600D86 /* Project object */;
 }

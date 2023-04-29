@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct MemoApp_TCAApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                store: Store(initialState: MemoFeature.MemoState(), reducer: MemoFeature())
+            )
         }
     }
 }
