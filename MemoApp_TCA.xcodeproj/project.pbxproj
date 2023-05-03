@@ -15,9 +15,10 @@
 		CF0E4EC529FCDF6000600D86 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4EC429FCDF6000600D86 /* Memo.swift */; };
 		CF0E4EC829FCDFBF00600D86 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E4EC729FCDFBF00600D86 /* Realm */; };
 		CF0E4ECA29FCDFBF00600D86 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E4EC929FCDFBF00600D86 /* RealmSwift */; };
-		CF0E4ECC29FCE4E200600D86 /* MemoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECB29FCE4E200600D86 /* MemoReducer.swift */; };
+		CF0E4ECC29FCE4E200600D86 /* MemoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECB29FCE4E200600D86 /* MemoFeature.swift */; };
 		CF0E4ECE29FCE71B00600D86 /* MemoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECD29FCE71B00600D86 /* MemoItem.swift */; };
 		CF0E4ED029FCE9F600600D86 /* MemoEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECF29FCE9F600600D86 /* MemoEditorView.swift */; };
+		CFBDB2802A02377D00869942 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBDB27F2A02377D00869942 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +28,10 @@
 		CF0E4EB729FCDF3400600D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF0E4EBA29FCDF3400600D86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF0E4EC429FCDF6000600D86 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
-		CF0E4ECB29FCE4E200600D86 /* MemoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoReducer.swift; sourceTree = "<group>"; };
+		CF0E4ECB29FCE4E200600D86 /* MemoFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoFeature.swift; sourceTree = "<group>"; };
 		CF0E4ECD29FCE71B00600D86 /* MemoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoItem.swift; sourceTree = "<group>"; };
 		CF0E4ECF29FCE9F600600D86 /* MemoEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoEditorView.swift; sourceTree = "<group>"; };
+		CFBDB27F2A02377D00869942 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +72,10 @@
 				CF0E4EB729FCDF3400600D86 /* Assets.xcassets */,
 				CF0E4EB929FCDF3400600D86 /* Preview Content */,
 				CF0E4EC429FCDF6000600D86 /* Memo.swift */,
-				CF0E4ECB29FCE4E200600D86 /* MemoReducer.swift */,
+				CF0E4ECB29FCE4E200600D86 /* MemoFeature.swift */,
 				CF0E4ECD29FCE71B00600D86 /* MemoItem.swift */,
 				CF0E4ECF29FCE9F600600D86 /* MemoEditorView.swift */,
+				CFBDB27F2A02377D00869942 /* RealmManager.swift */,
 			);
 			path = MemoApp_TCA;
 			sourceTree = "<group>";
@@ -164,11 +167,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF0E4ECC29FCE4E200600D86 /* MemoReducer.swift in Sources */,
+				CF0E4ECC29FCE4E200600D86 /* MemoFeature.swift in Sources */,
 				CF0E4EC529FCDF6000600D86 /* Memo.swift in Sources */,
 				CF0E4EB629FCDF3300600D86 /* ContentView.swift in Sources */,
 				CF0E4ECE29FCE71B00600D86 /* MemoItem.swift in Sources */,
 				CF0E4EB429FCDF3300600D86 /* MemoApp_TCAApp.swift in Sources */,
+				CFBDB2802A02377D00869942 /* RealmManager.swift in Sources */,
 				CF0E4ED029FCE9F600600D86 /* MemoEditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
