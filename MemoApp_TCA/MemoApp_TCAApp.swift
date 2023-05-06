@@ -13,7 +13,7 @@ struct MemoApp_TCAApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(
-                store: Store(initialState: MemoFeature.MemoState(), reducer: MemoFeature())
+                store: Store(initialState: Root.State(), reducer: Root())
             )
         }
     }
