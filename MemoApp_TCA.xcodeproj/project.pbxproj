@@ -17,6 +17,7 @@
 		CF0E4ECA29FCDFBF00600D86 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E4EC929FCDFBF00600D86 /* RealmSwift */; };
 		CF0E4ECE29FCE71B00600D86 /* MemoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECD29FCE71B00600D86 /* MemoItem.swift */; };
 		CF0E4ED029FCE9F600600D86 /* MemoEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E4ECF29FCE9F600600D86 /* MemoEditorView.swift */; };
+		CF2E7F8E2A0774AA004229D3 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2E7F8D2A0774AA004229D3 /* RadioButton.swift */; };
 		CFBDB2802A02377D00869942 /* RealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBDB27F2A02377D00869942 /* RealmClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		CF0E4EC429FCDF6000600D86 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		CF0E4ECD29FCE71B00600D86 /* MemoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoItem.swift; sourceTree = "<group>"; };
 		CF0E4ECF29FCE9F600600D86 /* MemoEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoEditorView.swift; sourceTree = "<group>"; };
+		CF2E7F8D2A0774AA004229D3 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		CFBDB27F2A02377D00869942 /* RealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +67,7 @@
 		CF0E4EB229FCDF3300600D86 /* MemoApp_TCA */ = {
 			isa = PBXGroup;
 			children = (
+				CF2E7F8D2A0774AA004229D3 /* RadioButton.swift */,
 				CF0E4EB329FCDF3300600D86 /* MemoApp_TCAApp.swift */,
 				CF0E4EB529FCDF3300600D86 /* ContentView.swift */,
 				CF0E4EB729FCDF3400600D86 /* Assets.xcassets */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF0E4EC529FCDF6000600D86 /* Memo.swift in Sources */,
+				CF2E7F8E2A0774AA004229D3 /* RadioButton.swift in Sources */,
 				CF0E4EB629FCDF3300600D86 /* ContentView.swift in Sources */,
 				CF0E4ECE29FCE71B00600D86 /* MemoItem.swift in Sources */,
 				CF0E4EB429FCDF3300600D86 /* MemoApp_TCAApp.swift in Sources */,

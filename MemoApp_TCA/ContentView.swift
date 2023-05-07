@@ -18,6 +18,7 @@ struct Root : ReducerProtocol {
         var selectedMemo: Memo? = nil
         // EditorView 에 대한 State를 가지고 있어야 함.
         var memoEditorState = MemoEditorFeature.State()
+        var radioState = RadioFeature.State()
     }
     
     // 도메인 + 액션 (액션을 통해 상태를 변경함)
@@ -26,6 +27,7 @@ struct Root : ReducerProtocol {
         case deleteMemo(_ id: ObjectId)
         
         case goToMemoEditorView(MemoEditorFeature.Action)
+        case radioButtonAction(RadioFeature.Action)
         case onAppear
     }
     
@@ -51,6 +53,11 @@ struct Root : ReducerProtocol {
         Scope(state: \.memoEditorState, action: /Action.goToMemoEditorView) {
             MemoEditorFeature()
         }
+        Scope(state: \.radioState, action: /Action.radioButtonAction) {
+            RadioFeature()
+        }
+        
+        
     }
     
 }
@@ -61,51 +68,65 @@ struct ContentView: View {
     var body: some View {
         WithViewStore(self.store) { viewStore in
             NavigationView {
-                List {
-                    ForEach(viewStore.memos, id:\.id) { memo in
-                        if !memo.isInvalidated && !memo.isFrozen {
-                            NavigationLink {
-                                MemoEditorView(
-                                    mode: .update,
-                                    memo: memo,
-                                    store: self.store.scope(
-                                        state: \.memoEditorState,
-                                        action: Root.Action.goToMemoEditorView
+                VStack{
+                    RadioButton(
+                        store: self.store.scope(
+                            state: \.radioState,
+                            action: Root.Action.radioButtonAction
+                        ),
+                        values: [
+                            "Color",
+                            "Date",
+                            "Text"
+                        ]
+                    ).padding([.horizontal, .top], 20)
+                    List {
+                        ForEach(viewStore.memos, id:\.id) { memo in
+                            if !memo.isInvalidated && !memo.isFrozen {
+                                NavigationLink {
+                                    MemoEditorView(
+                                        mode: .update,
+                                        memo: memo,
+                                        store: self.store.scope(
+                                            state: \.memoEditorState,
+                                            action: Root.Action.goToMemoEditorView
+                                        )
                                     )
-                                )
-                            } label: {
-                                MemoItem(memo)
+                                } label: {
+                                    MemoItem(memo)
+                                }
+                            }
+                        }
+                        .onDelete { indexSet in
+                            indexSet.forEach { index in
+                                let memoToDelete = viewStore.memos[index]
+                                viewStore.send(.deleteMemo(memoToDelete.id))
                             }
                         }
                     }
-                    .onDelete { indexSet in
-                        indexSet.forEach { index in
-                            let memoToDelete = viewStore.memos[index]
-                            viewStore.send(.deleteMemo(memoToDelete.id))
-                        }
+                    .listStyle(PlainListStyle())
+                    .refreshable {
+                        viewStore.send(.findAllMemo)
                     }
-                }
-                .listStyle(PlainListStyle())
-                .refreshable {
-                    viewStore.send(.findAllMemo)
-                }
-                .navigationTitle("메모")
-                .toolbar {
-                    NavigationLink {
-                        MemoEditorView(
-                            store: self.store.scope(
-                                state: \.memoEditorState,
-                                action: Root.Action.goToMemoEditorView
+                    .navigationTitle("메모")
+                    .toolbar {
+                        NavigationLink {
+                            MemoEditorView(
+                                store: self.store.scope(
+                                    state: \.memoEditorState,
+                                    action: Root.Action.goToMemoEditorView
+                                )
                             )
-                        )
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 25))
-                            .bold()
-                            .foregroundColor(Color("title_color"))
-                    }
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.system(size: 25))
+                                .bold()
+                                .foregroundColor(Color("title_color"))
+                        }
 
+                    }
                 }
+                
             }.tint(.white)
                 .onAppear {
                     print("onAppear")
