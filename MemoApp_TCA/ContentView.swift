@@ -111,6 +111,11 @@ struct ContentView: View {
                     print("onAppear")
                     viewStore.send(.findAllMemo)
                 }
+                .onChange(of: viewStore.memoEditorState.isCompleted) { isCompleted in
+                    if isCompleted {
+                        viewStore.send(.findAllMemo)
+                    }
+                }
         }
     }
 }
