@@ -80,11 +80,8 @@ struct RadioButton_Previews: PreviewProvider {
                 initialState: RadioFeature.State(),
                 reducer: RadioFeature()),
             values: [
-                "Date",
-                "Color",
-                "Text",
-                "abcd",
-                "abcd",
+                "오름차순",
+                "내림차순"
             ]
         )
     }

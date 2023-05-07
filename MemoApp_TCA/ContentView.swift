@@ -16,15 +16,18 @@ struct Root : ReducerProtocol {
     struct State: Equatable {
         var memos: [Memo] = []
         var selectedMemo: Memo? = nil
+        var sortValue: String = "Color"
         // EditorView 에 대한 State를 가지고 있어야 함.
         var memoEditorState = MemoEditorFeature.State()
-        var radioState = RadioFeature.State()
+        var radioButtonState = RadioFeature.State() // 정렬 기준
     }
     
     // 도메인 + 액션 (액션을 통해 상태를 변경함)
     enum Action: Equatable {
         case findAllMemo
         case deleteMemo(_ id: ObjectId)
+        case radioButtonTapped(_ value: String)
+        case sortMemos
         
         case goToMemoEditorView(MemoEditorFeature.Action)
         case radioButtonAction(RadioFeature.Action)
@@ -38,10 +41,29 @@ struct Root : ReducerProtocol {
             switch action {
             case .findAllMemo:
                 state.memos = realmClient.findAllMemo()
-                return .none
+                return EffectTask.run { send in
+                    await send.send(.sortMemos)
+                }
             case .deleteMemo(let id):
                 realmClient.deleteMemo(id)
                 state.memos = realmClient.findAllMemo()
+                return .none
+            case .radioButtonTapped(let value):
+                state.sortValue = value
+                return EffectTask.run { send in
+                    await send.send(.sortMemos)
+                }
+            case .sortMemos:
+                switch state.sortValue{
+                case "Color":
+                    state.memos = state.memos.sorted { $0.color < $1.color }
+                case "Date":
+                    state.memos = state.memos.sorted { $0.date < $1.date }
+                case "Text":
+                    state.memos = state.memos.sorted { $0.text < $1.text }
+                default:
+                    break
+                }
                 return .none
             case .onAppear:
                 state = .init()
@@ -53,10 +75,9 @@ struct Root : ReducerProtocol {
         Scope(state: \.memoEditorState, action: /Action.goToMemoEditorView) {
             MemoEditorFeature()
         }
-        Scope(state: \.radioState, action: /Action.radioButtonAction) {
+        Scope(state: \.radioButtonState, action: /Action.radioButtonAction) {
             RadioFeature()
         }
-        
         
     }
     
@@ -65,20 +86,25 @@ struct Root : ReducerProtocol {
 // MARK: - ContentView
 struct ContentView: View {
     let store: StoreOf<Root>
+    let filterValues = [
+        "Color",
+        "Date",
+        "Text"
+    ]
+    let sortDirection = [
+        "오름차순",
+        "내림차순"
+    ]
     var body: some View {
         WithViewStore(self.store) { viewStore in
             NavigationView {
                 VStack{
                     RadioButton(
                         store: self.store.scope(
-                            state: \.radioState,
+                            state: \.radioButtonState,
                             action: Root.Action.radioButtonAction
                         ),
-                        values: [
-                            "Color",
-                            "Date",
-                            "Text"
-                        ]
+                        values: filterValues
                     ).padding([.horizontal, .top], 20)
                     List {
                         ForEach(viewStore.memos, id:\.id) { memo in
@@ -131,11 +157,15 @@ struct ContentView: View {
                 .onAppear {
                     print("onAppear")
                     viewStore.send(.findAllMemo)
+                    viewStore.send(.radioButtonTapped("Color"))
                 }
                 .onChange(of: viewStore.memoEditorState.isCompleted) { isCompleted in
                     if isCompleted {
                         viewStore.send(.findAllMemo)
                     }
+                }
+                .onChange(of: viewStore.radioButtonState.selected) { selected in
+                    viewStore.send(.radioButtonTapped(filterValues[selected]))
                 }
         }
     }
